@@ -1,0 +1,22 @@
+<% holidays.each do |holiday| %>
+ <article>
+   <div>
+     <%= link_to holiday_path(holiday.id) do %>
+     <div>
+       <%= image_tag holiday.user.get_profile_image(100,100) %>
+     </div>
+     <div>
+       <%= holiday.user.name %>
+     </div>
+     <div>
+       <%= holiday.content %>
+     </div>
+     <div>
+       <% if holiday.image_id.attached? %>
+         <%= image_tag holiday.image_id, size: "100x100" %>
+       <% end %>
+     </div>
+     <% end %>
+   </div>
+ </article>
+<% end %>

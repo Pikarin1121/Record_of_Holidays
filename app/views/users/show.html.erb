@@ -1,0 +1,14 @@
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+<div>
+  <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+</div>
+<div>
+  <%= @user.name %>
+</div>
+<div>
+  <%= @user.introduction %>
+</div>
+
+<%= render 'holidays/list', holidays: @holidays %>
