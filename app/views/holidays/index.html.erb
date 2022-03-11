@@ -1,18 +1,23 @@
-<h4>ホーム</h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 mx-auto">
+        <h4>ホーム</h4>
+        <% if @new_holiday.errors.any? %>
+          <%= @new_holiday.errors.count %>件のエラー
+          <ul>
+            <% @new_holiday.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-<% if @new_holiday.errors.any? %>
-  <%= @new_holiday.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @new_holiday.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+        <%= form_with model: @new_holiday do |f| %>
+          <%= f.text_area :content %><br>
+          <%= f.file_field :image_id, accept: "image/*" %><br>
+          <%= f.submit '投稿' %>
+        <% end %>
 
-<%= form_with model: @new_holiday do |f| %>
-  <%= f.text_area :content %><br>
-  <%= f.file_field :image_id, accept: "image/*" %><br>
-  <%= f.submit '投稿' %>
-<% end %>
-
-<%= render 'list', holidays: @holidays %>
+        <%= render 'list', holidays: @holidays %>
+      </div>
+    </div>
+  </div>

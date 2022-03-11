@@ -4,9 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :holidays, dependent: :destroy
-
   has_one_attached :profile_image_id
+  has_many :holidays, dependent: :destroy
+  has_many :holiday_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  has_many :relationships, foreign_key: :following_id
+  has_many :followings, through: :relationships, source: :follower
+
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id
+  has_many :followers, through: :reverse_of_relationships, source: :following
 
   def get_profile_image(width, height)
     unless profile_image_id.attached?
@@ -15,4 +22,9 @@ class User < ApplicationRecord
     end
     profile_image_id.variant(resize_to_limit: [width,height]).processed
   end
+
+  def is_followed_by?(user)
+    reverse_of_relationships.find_by(following_id: user.id).present?
+  end
+
 end

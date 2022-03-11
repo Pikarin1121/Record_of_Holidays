@@ -10,20 +10,69 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="padding-top:5rem">
     <header>
-      <% unless user_signed_in? %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+        <div class="container-fluid">
+          <% unless user_signed_in? %>
+            <a class="navbar-brand navbar-left" href="/">Record of Holidays</a>
+            <nav class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                <%= link_to about_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fa-solid fa-ghost"></i>
+                    About
+                  </span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_registration_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    新規登録
+                  </span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fas fa-sign-in"></i>
+                    ログイン
+                  </span>
+                <% end %>
+              </li>
+            </nav>
+          <% else %>
+            <a class="navbar-brand navbar-left" href="/holidays">Record of Holidays</a>
+            <nav class="nav navbar-nav navbar-right">
+              <li class="nav-item">
+                <%= link_to holidays_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fa-solid fa-house"></i>
+                    ホーム
+                  </span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to user_path(current_user) do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fa-solid fa-user"></i>
+                    マイページ
+                  </span>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="text-light text-danger nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    ログアウト
+                  </span>
+                <% end %>
+              </li>
+            </nav>
+          <% end %>
+        </div>
+      </nav>
     </header>
     <%= yield %>
   </body>

@@ -21,6 +21,7 @@ class HolidaysController < ApplicationController
   def show
     @new_holiday = Holiday.new
     @holiday = Holiday.find(params[:id])
+    @holiday_comment = HolidayComment.new
   end
 
   def destroy
