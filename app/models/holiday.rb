@@ -10,9 +10,17 @@ class Holiday < ApplicationRecord
   def get_image
     image_id
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  def self.search(search)
+    if search != ""
+      Holiday.where(['content LIKE(?)', "%#{search}%"])
+    else
+      Holiday.all
+    end
   end
 
 

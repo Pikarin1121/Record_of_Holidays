@@ -24,7 +24,7 @@
                       <button type="button" class="btn btn btn-danger">フォロー解除</button>
                     <% end %>
                   <% else %>
-                    <%= link_to user_relationships_path(@user), method: :post do %>
+                    <%= link_to user_relationships_path(user), method: :post do %>
                       <button type="button" class="btn btn btn-primary">フォロー</button>
                     <% end %>
                   <% end %>

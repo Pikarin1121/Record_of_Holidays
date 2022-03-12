@@ -54,6 +54,14 @@
                 <% end %>
               </li>
               <li class="nav-item">
+                <%= link_to search_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    検索
+                  </span>
+                <% end %>
+              </li>
+              <li class="nav-item">
                 <%= link_to user_path(current_user) do %>
                   <span class="text-light text-white nav-link">
                     <i class="fa-solid fa-user"></i>
