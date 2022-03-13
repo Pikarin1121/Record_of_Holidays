@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-10 col-md-8 col-sm-6">
+
+      <h4><%= @user.name %>さんとのDM</h4>
+
+      <table class="message table">
+        <thead>
+          <tr>
+            <th style="text-align: left; font-size: 20px;"><%= current_user.name %></th>
+            <th style="text-align: right; font-size: 20px;"><%= @user.name %></th>
+          </tr>
+        </thead>
+        <% @chats.each do |chat| %>
+          <% if chat.user_id == current_user.id %>
+            <tbody>
+              <tr>
+                <td>
+                  <p style="text-align: left;"><%= chat.message %></p>
+                </td>
+                <td></td>
+              </tr>
+          <% else %>
+            <tr>
+              <td></td>
+              <td>
+                <p style="text-align: right;"><%= chat.message %></p>
+              </td>
+            </tr>
+            </tbody>
+          <% end %>
+        <% end %>
+      </table>
+
+      <%= form_with model: @chat, local: false do |f| %>
+        <%= f.text_field :message %>
+        <%= f.hidden_field :room_id %>
+        <%= f.submit '送信', class: 'btn btn-sm btn-success chat-bth' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
