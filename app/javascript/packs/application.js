@@ -13,19 +13,19 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import '../skippr.min.js'
 
-require("@rails/ujs").start();
-require("turbolinks").start();
-require("@rails/activestorage").start();
-require("channels");
-require("jquery");
-
-Rails.start()
+//Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 $(function() {
-  $('.images').slick({
+  $('#theTarget').skippr({
     dots: true,
+    speed: 1000,
+    autoPlay: true,
+    autoPlayDuration: 3000,
+    transition: 'slide',
+    arrows: true,
   });
 });

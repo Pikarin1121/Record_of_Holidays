@@ -9,9 +9,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body style="padding-top:5rem">
@@ -86,17 +83,20 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
-  </body>
 
-  <footer class="mt-5">
-    <div class="container-fluid bg-info fixed-bottom">
-      <div class="row">
-        <div class="mx-auto">
-          <p class="text-align-center">©CopyRight Record of Holidays</p>
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="mt-5">
+      <div class="container-fluid bg-info fixed-bottom">
+        <div class="row">
+          <div class="mx-auto">
+            <p class="text-align-center">©CopyRight Record of Holidays</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </body>
 
 </html>
