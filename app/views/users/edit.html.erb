@@ -1,21 +1,44 @@
-<h4>プロフィール編集</h4>
+<div class="container justify-content-center">
 
-<%= form_with model: @user do |f| %>
-  <label for="inputImage">ProfileImage</label>
-  <%= f.file_field :profile_image_id, placeholder: "プロフィール写真", accept: "image/*" %><br>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %><br>
-  <label for="inputIntroduction">Introduction</label>
-  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介" %><br>
-  <label for="inputBirthday">Birth Date</label>
-  <%= raw sprintf(
-      f.date_select(
-      :birthday,
-      use_month_numbers: true,
-      start_year: 1970,
-      end_year: (Time.now.year - 18),
-      default: Date.new(2000, 1, 1),
-      date_separator: '%s'),
-      '年 ' , '月 ') + '日' %><br>
-  <%= f.submit "保存" %>
-<% end %>
+  <h4>プロフィール編集</h4>
+
+  <div class="row justify-content-center">
+
+    <%= form_with model: @user do |f| %>
+      <div class="form-group">
+        <label for="inputImage">プロフィール写真</label>
+        <%= f.file_field :profile_image_id, placeholder: "プロフィール写真", accept: "image/*" %><br>
+      </div>
+
+      <div class="form-group">
+        <label for="inputName">ユーザー名</label>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputIntroduction">自己紹介文</label>
+        <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介" %>
+      </div>
+
+      <div class="form-group">
+        <label for="inputBirthday">生年月日</label>
+        <%= raw sprintf(
+            f.date_select(
+            :birthday,
+            use_month_numbers: true,
+            start_year: 1970,
+            end_year: (Time.now.year - 18),
+            default: Date.new(2000, 1, 1),
+            date_separator: '%s'),
+            '年 ' , '月 ') + '日' %>
+      </div>
+
+      <div class="float-right">
+        <%= f.submit "保存" %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
+
