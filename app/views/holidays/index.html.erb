@@ -11,13 +11,15 @@
           </ul>
         <% end %>
 
-        <%= form_with model: @new_holiday do |f| %>
-          <%= f.text_area :content %><br>
-          <%= f.file_field :image_id, accept: "image/*" %><br>
-          <%= f.submit '投稿' %>
-        <% end %>
 
-        <%= render 'list', holidays: @holidays %>
+          <%= form_with model: @new_holiday do |f| %>
+            <%= f.text_area :content, class: 'form-control-plaintext', placeholder: "新規投稿" %><br>
+            <%= f.file_field :image_id, accept: "image/*" %>
+            <%= f.submit '投稿' %>
+          <% end %>
+
+          <%= render 'list', holidays: @holidays %>
+
       </div>
     </div>
   </div>

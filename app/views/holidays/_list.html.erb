@@ -1,40 +1,47 @@
 <!--マイページの自分の投稿と、投稿一覧ページの投稿の部分テンプレート-->
 <% holidays.each do |holiday| %>
- <article>
-   <div>
-     <%= link_to holiday_path(holiday.id) do %>
-       <div>
-         <%= image_tag holiday.user.get_profile_image(100,100) %>
-       </div>
-       <div>
-         <%= holiday.user.name %>
-       </div>
-       <div>
-         <%= holiday.content %>
-       </div>
-       <div>
-         <% if holiday.image_id.attached? %>
-           <%= image_tag holiday.image_id, size: "100x100" %>
-         <% end %>
-       </div>
-     <% end %>
-     <div>
-       <i class="fa-solid fa-comment"></i>
-       <%= holiday.holiday_comments.count %>
-       <% if holiday.favorited_by?(current_user) %>
+ <div class="media">
 
-         <%= link_to holiday_favorites_path(holiday), method: :delete do %>
-           <i class="fa-solid fa-heart"></i><%= holiday.favorites.count %>
+     <%#= link_to user_path(user.id) do %>
+       <img class="d-flex align-self-start m-3"><%= image_tag holiday.user.get_profile_image(70,70) %></img>
+     <%# end %>
+
+       <div class="media-body">
+         <%= link_to holiday_path(holiday.id) do %>
+           <%#= link_to user_path(user.id) do %>
+             <h5 class="mt-0"><%= holiday.user.name %></h5>
+           <%# end %>
+
+
+           <p><%= holiday.content %></p>
+
+
+          <img>
+           <% if holiday.image_id.attached? %>
+             <%= image_tag holiday.image_id, size: "300x200" %>
+           <% end %>
+          </img>
+
          <% end %>
 
-       <% else %>
+         <div>
+           <i class="fa-solid fa-comment"></i>
+           <%= holiday.holiday_comments.count %>
+           <% if holiday.favorited_by?(current_user) %>
 
-         <%= link_to holiday_favorites_path(holiday), method: :post do %>
-           <i class="fa-regular fa-heart"></i><%= holiday.favorites.count %>
-         <% end %>
+             <%= link_to holiday_favorites_path(holiday), method: :delete do %>
+               <i class="fa-solid fa-heart"></i><%= holiday.favorites.count %>
+             <% end %>
 
-       <% end %>
-     </div>
-   </div>
- </article>
+           <% else %>
+
+             <%= link_to holiday_favorites_path(holiday), method: :post do %>
+               <i class="fa-regular fa-heart"></i><%= holiday.favorites.count %>
+             <% end %>
+
+           <% end %>
+         </div>
+
+       </div>
+ </div>
 <% end %>

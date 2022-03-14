@@ -1,73 +1,85 @@
-<h4>お休みの記録</h4>
-<article>
-  <div>
-     <%= image_tag @holiday.user.get_profile_image(100,100) %>
-   </div>
-   <div>
-     <%= @holiday.user.name %>
-   </div>
-   <div>
-     <%= @holiday.content %>
-   </div>
-   <div>
-     <% if @holiday.image_id.attached? %>
-       <%= image_tag @holiday.image_id, size: "100x100" %>
-     <% end %>
-   </div>
-   <div>
-     <%= @holiday.created_at.strftime('%Y/%m/%d') %>
-   </div>
-   <div>
-     <% if @holiday.user == current_user %>
-       <%= link_to "削除", holiday_path(@holiday), method: :delete %>
-     <% end %>
-   </div>
-   <div>
-     <i class="fa-solid fa-comment"></i>
-     <%= @holiday.holiday_comments.count %>
-     <% if @holiday.favorited_by?(current_user) %>
-       <%= link_to holiday_favorites_path(@holiday), method: :delete do %>
-         <i class="fa-solid fa-heart"></i><%= @holiday.favorites.count %>
-       <% end %>
-     <% else %>
-       <%= link_to holiday_favorites_path(@holiday), method: :post do %>
-         <i class="fa-regular fa-heart"></i><%= @holiday.favorites.count %>
-       <% end %>
-   <% end %>
-   </div>
-</article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 mx-auto">
+        <h4>お休みの記録</h4>
+        <div class="media">
 
-<% @holiday.holiday_comments.each do |holiday_comment| %>
- <div>
-   <div>
-     <%= image_tag holiday_comment.user.get_profile_image(100,100) %>
-   </div>
-   <div>
-     <%= holiday_comment.user.name %>
-   </div>
-   <div>
-     <%= holiday_comment.comment %>
-   </div>
-   <div>
-     <% if holiday_comment.image_id.attached? %>
-       <%= image_tag holiday_comment.image_id, size: "100x100" %>
-     <% end %>
-   </div>
-   <div>
-     <%= holiday_comment.created_at.strftime('%Y/%m/%d') %>
-   </div>
-   <div>
-     <% if holiday_comment.user == current_user %>
-       <%= link_to "削除", holiday_holiday_comment_path(holiday_comment.holiday, holiday_comment), method: :delete %>
-     <% end %>
-   </div>
- </div>
-<% end %>
+         <img class="d-flex align-self-start mr-3"><%= image_tag @holiday.user.get_profile_image(70,70) %></img>
 
- <div>
-   <%= form_with model: [@holiday, @holiday_comment] do |f| %>
-     <%= f.text_area :comment, placeholder: "コメント" %><br>
-     <%= f.file_field :image_id, accept: "image/*" %><br>
-     <%= f.submit '送信する' %>
-   <% end %>
- </div>
+         <div class="media-body">
+           <h5 class="mt-0"><%= @holiday.user.name %></h5>
+
+           <p><%= @holiday.content %></p>
+
+           <div>
+             <% if @holiday.image_id.attached? %>
+               <%= image_tag @holiday.image_id, size: "300x200" %>
+             <% end %>
+           </div>
+
+           <p><%= @holiday.created_at.strftime('%Y/%m/%d') %></p>
+
+           <div>
+             <% if @holiday.user == current_user %>
+               <%= link_to "削除", holiday_path(@holiday), method: :delete %>
+             <% end %>
+           </div>
+
+           <div>
+             <i class="fa-solid fa-comment"></i>
+             <%= @holiday.holiday_comments.count %>
+             <% if @holiday.favorited_by?(current_user) %>
+               <%= link_to holiday_favorites_path(@holiday), method: :delete do %>
+                 <i class="fa-solid fa-heart"></i><%= @holiday.favorites.count %>
+               <% end %>
+             <% else %>
+               <%= link_to holiday_favorites_path(@holiday), method: :post do %>
+                 <i class="fa-regular fa-heart"></i><%= @holiday.favorites.count %>
+               <% end %>
+           <% end %>
+           </div>
+
+          </div>
+        </div>
+
+
+        <% @holiday.holiday_comments.each do |holiday_comment| %>
+
+         <div class="media">
+
+           <img class="d-flex align-self-start m-3"><%= image_tag holiday_comment.user.get_profile_image(70,70) %></img>
+
+           <div class="media-body">
+             <h5 class="mt-0"><%= holiday_comment.user.name %></h5>
+
+             <p><%= holiday_comment.comment %></p>
+
+             <img>
+               <% if holiday_comment.image_id.attached? %>
+                 <%= image_tag holiday_comment.image_id, size: "300x200" %>
+               <% end %>
+             </img>
+
+             <p><%= holiday_comment.created_at.strftime('%Y/%m/%d') %></p>
+
+             <div>
+               <% if holiday_comment.user == current_user %>
+                 <%= link_to "削除", holiday_holiday_comment_path(holiday_comment.holiday, holiday_comment), method: :delete %>
+               <% end %>
+             </div>
+
+           </div>
+
+         </div>
+        <% end %>
+
+       <div>
+         <%= form_with model: [@holiday, @holiday_comment] do |f| %>
+           <%= f.text_area :comment, class: 'form-control-plaintext', placeholder: "コメント" %><br>
+           <%= f.file_field :image_id, accept: "image/*" %>
+           <%= f.submit '送信する' %>
+         <% end %>
+       </div>
+      </div>
+    </div>
+  </div>
