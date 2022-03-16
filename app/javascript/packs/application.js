@@ -15,7 +15,7 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 import '../skippr.min.js'
 
-//Rails.start()
+Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 

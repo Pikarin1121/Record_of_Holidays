@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
     @holidays = @user.holidays
@@ -6,12 +7,20 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:notice] = "権限なし"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報を更新しました"
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   def followings

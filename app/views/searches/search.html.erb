@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="col-10">
+    <div class="col-8">
       <%= form_with url: search_path, local: true, method: :get, class: "search_form" do |f| %>
         <%= f.text_field :keyword, class: "search-input" %>
         <%= f.select :range, options_for_select([['User'],['Holiday']]) %>
@@ -43,7 +43,9 @@
           </tbody>
         </table>
       <% else %>
-        <%= render 'holidays/list', holidays: @holidays %>
+        <div class="mt-3">
+          <%= render 'holidays/list', holidays: @holidays %>
+        </div>
       <% end %>
     </div>
   </div>

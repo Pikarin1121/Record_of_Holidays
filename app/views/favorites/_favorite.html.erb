@@ -1,0 +1,9 @@
+<% if holiday.favorited_by?(current_user) %>
+ <%= link_to holiday_favorites_path(holiday), method: :delete, remote: true do %>
+   <i class="fa-solid fa-heart" style="color:red"></i><%= holiday.favorites.count %>
+ <% end %>
+<% else %>
+ <%= link_to holiday_favorites_path(holiday), method: :post, remote: true do %>
+   <i class="fa-regular fa-heart" style="color:red"></i><%= holiday.favorites.count %>
+ <% end %>
+<% end %>

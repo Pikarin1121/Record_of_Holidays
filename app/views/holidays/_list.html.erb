@@ -27,19 +27,9 @@
          <div>
            <i class="fa-solid fa-comment"></i>
            <%= holiday.holiday_comments.count %>
-           <% if holiday.favorited_by?(current_user) %>
-
-             <%= link_to holiday_favorites_path(holiday), method: :delete do %>
-               <i class="fa-solid fa-heart"></i><%= holiday.favorites.count %>
-             <% end %>
-
-           <% else %>
-
-             <%= link_to holiday_favorites_path(holiday), method: :post do %>
-               <i class="fa-regular fa-heart"></i><%= holiday.favorites.count %>
-             <% end %>
-
-           <% end %>
+           <span class=<%="favorite-" + holiday.id.to_s %> >
+             <%= render 'favorites/favorite', holiday: holiday %>
+           </span>
          </div>
 
        </div>
