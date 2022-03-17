@@ -10,10 +10,11 @@
         <%= image_tag @user.get_profile_image(100,100) %>
         <div class="float-right">
           <% if @user == current_user %>
-            <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
           <% else %>
-            <%= link_to "DMを開始", chat_path(@user.id) %>
+            <p><%= link_to "DMを開始", chat_path(@user.id) %></p>
           <% end %>
+          <p><%= link_to "いいね一覧", favorites_user_path(@user) %></p>
         </div>
       </div>
 

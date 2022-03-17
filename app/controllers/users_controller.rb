@@ -33,9 +33,16 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:holiday_id)
+    @favorite_holidays = Holiday.find(favorites)
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :profile_image_id, :birthday, :introduction)
   end
+
 end
