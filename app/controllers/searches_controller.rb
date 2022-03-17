@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
     if @range == "User"
       @users = User.all.search(params[:keyword])
     else
-      @holidays = Holiday.all.search(params[:keyword])
+      @holidays = Holiday.all.search(params[:keyword]).order(created_at: :desc)
     end
   end
 end

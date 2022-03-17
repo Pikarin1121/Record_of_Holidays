@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @holidays = @user.holidays
+    @holidays = @user.holidays.order(created_at: :desc)
   end
 
   def edit

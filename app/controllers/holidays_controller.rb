@@ -4,8 +4,8 @@ class HolidaysController < ApplicationController
 
   def index
     @new_holiday = Holiday.new
-    @holidays = Holiday.all
-    
+    @holidays = Holiday.all.order(created_at: :desc)
+
   end
 
   def create
