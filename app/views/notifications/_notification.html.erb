@@ -1,0 +1,56 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+
+      <div class="form-inline">
+        <span>
+          <%= link_to user_path(visitor) do %>
+            <%= image_tag visitor.get_profile_image(70,70), class: "icon_mini" %>
+            <strong>
+              <%= visitor.name %>
+            </strong>
+          <% end %>
+          さんが
+
+          <% case notification.action %>
+          <% when 'follow' then %>
+            あなたをフォローしました
+
+
+          <% when 'like' then %>
+            <%= link_to 'あなたの投稿', notification.holiday, style: 'font-weight: bold;' %>
+            にいいねしました
+
+
+          <% when 'holiday_comment' then %>
+            <% if notification.holiday.user_id == visited.id %>
+              <%= link_to 'あなたの投稿', notification.holiday, style: 'font-weight: bold;' %>
+            <% else %>
+              <span>
+                <%= link_to holiday_path(notification.holiday) do %>
+                  <%= image_tag notification.holiday.user.get_profile_image(70,70), class: 'icon_mini' %>
+                  <strong>
+                    <%= notification.holiday.user.name + 'さんの投稿' %>
+                  </strong>
+                <% end %>
+              </span>
+            <% end %>
+            にコメントしました
+            <p><%= HolidayComment.find_by(id: notification.holiday_comment_id)&.comment %></p>
+          <% end %>
+
+        </span>
+      </div>
+
+      <div class="text-right">
+        <%= time_ago_in_words(notification.created_at).upcase %>
+      </div>
+      <hr>
+
+    </div>
+  </div>
+</div>
+
+

@@ -90,6 +90,15 @@
               </li>
 
               <li class="nav-item">
+                <%= link_to notifications_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="fas fa-bell"></i>
+                    通知
+                  </span>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
                 <%= link_to destroy_user_session_path,data: {"turbolinks"=>false}, method: :delete do %>
                   <span class="text-light text-danger nav-link">
                     <i class="fas fa-sign-out-alt"></i>

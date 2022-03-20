@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get 'searches/search', as: 'search'
 
   resources :chats, only: [:index, :show, :create]
+  resources :notifications, only: [:index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
