@@ -39,6 +39,12 @@
             <% end %>
             にコメントしました
             <p><%= HolidayComment.find_by(id: notification.holiday_comment_id)&.comment %></p>
+
+          <% when 'dm' then %>
+            あなたにDMを送りました
+            <span>
+              <p><%= Chat.find_by(id: notification.chat_id)&.message %></p>
+            </span>
           <% end %>
 
         </span>
