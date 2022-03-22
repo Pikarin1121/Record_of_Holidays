@@ -81,6 +81,15 @@
               </li>
 
               <li class="nav-item">
+                <%= link_to chats_path do %>
+                  <span class="text-light text-white nav-link">
+                    <i class="far fa-envelope"></i>
+                    DM
+                  </span>
+                <% end %>
+              </li>
+
+              <li class="nav-item">
                 <%= link_to user_path(current_user) do %>
                   <span class="text-light text-white nav-link">
                     <i class="fas fa-user"></i>
@@ -93,11 +102,8 @@
                 <%= link_to notifications_path do %>
                   <% if unchecked_notifications.any? %>
                     <span class="text-light text-white nav-link">
-                      <i class="fas fa-bell fa-layers"></i>
-                      <span class="fa-layers-counter">
-                        <i class="fas fa-circle" style="background:Tomato"></i>
-                      </span>
-                      通知
+                      <i class="fas fa-bell"></i>
+                      通知(未読)
                     </span>
                   <% else %>
                     <span class="text-light text-white nav-link">

@@ -46,6 +46,10 @@
       <% elsif @range == "Holiday" %>
 
         <div class="mt-3">
+          <p>
+            <%= link_to '新着順', search_path('range': @range, 'latest': "true") %>
+            |<%= link_to 'いいね順', search_path('range': @range, 'favorite': "true") %>
+          </p>
           <%= render 'holidays/list', holidays: @holidays %>
         </div>
       <% end %>

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :holidays, dependent: :destroy
   has_many :holiday_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_holidays, through: :favorites, source: :holiday
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
 
