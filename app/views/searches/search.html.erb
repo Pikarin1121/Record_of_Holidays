@@ -42,7 +42,9 @@
             <% end %>
           </tbody>
         </table>
-      <% else %>
+
+      <% elsif @range == "Holiday" %>
+
         <div class="mt-3">
           <%= render 'holidays/list', holidays: @holidays %>
         </div>
