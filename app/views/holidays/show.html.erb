@@ -26,7 +26,7 @@
            </div>
 
            <div>
-             <i class="fa-solid fa-comment"></i>
+             <i class="far fa-comment"></i>
              <%= @holiday.holiday_comments.count %>
              <span class=<%="favorite-" + @holiday.id.to_s %> >
                <%= render 'favorites/favorite', holiday: @holiday %>

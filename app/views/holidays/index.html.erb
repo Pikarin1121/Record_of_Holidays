@@ -1,6 +1,6 @@
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-8 mx-auto">
+      <div class="col-lg-8 col-md-6 col-sm-4 mx-auto">
         <h4>ホーム</h4>
         <% if @new_holiday.errors.any? %>
           <%= @new_holiday.errors.count %>件のエラー
@@ -11,16 +11,17 @@
           </ul>
         <% end %>
 
-
+        <div class="pb-3 border-bottom border-4">
           <%= form_with model: @new_holiday do |f| %>
             <%= f.text_area :content, class: 'form-control-plaintext', placeholder: "新規投稿" %><br>
             <%= f.file_field :image_id, accept: "image/*" %>
             <%= f.submit '投稿' %>
           <% end %>
+        </div>
 
-          <div class="mt-5">
-            <%= render 'list', holidays: @holidays %>
-          </div>
+        <div class="mt-2">
+          <%= render 'list', holidays: @holidays %>
+        </div>
 
       </div>
     </div>
