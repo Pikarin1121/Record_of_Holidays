@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_044243) do
+ActiveRecord::Schema.define(version: 2022_03_20_054413) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,12 +77,12 @@ ActiveRecord::Schema.define(version: 2022_03_21_044243) do
     t.integer "visited_id", null: false
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "holiday_id"
     t.integer "chat_id"
     t.integer "holiday_comment_id"
     t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["chat_id"], name: "index_notifications_on_chat_id"
     t.index ["holiday_comment_id"], name: "index_notifications_on_holiday_comment_id"
     t.index ["holiday_id"], name: "index_notifications_on_holiday_id"
