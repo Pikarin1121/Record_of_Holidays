@@ -11,7 +11,7 @@ users = User.create!(
     {email: 'a@a', name: 'aaa', password: 'aaaaaa', profile_image_id: nil, birthday: '1990-1-1', introduction: '私の顔はない'},
     {email: 'b@b', name: 'bbb', password: 'bbbbbb', profile_image_id: nil, birthday: '1992-2-2', introduction: '私はRails'},
     {email: 'c@c', name: 'ccc', password: 'cccccc', profile_image_id: nil, birthday: '1993-3-3', introduction: '私は喫煙者'},
-    {email: 'd@d', name: 'ddd', password: 'dddddd', profile_image_id: nil, birthday: '1994-4-4', introduction: '私は着物です'}
+    {email: 'd@d', name: 'ddd', password: 'dddddd', profile_image_id: nil, birthday: '1994-4-4', introduction: '私は着物を着ています'}
   ]
 )
 

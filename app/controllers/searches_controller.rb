@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
         @holidays = Holiday.all.search(params[:keyword]).order(created_at: :desc)
       elsif params[:favorite]
         #1つの投稿につきユーザーは1いいねしかできないため、includes(:favorites)でよい
-        @holidays = Holiday.all.search(params[:keyword]).includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}
+        @holidays = Holiday.search(params[:keyword]).includes(:favorites).sort{|a,b| b.favorites.size <=> a.favorites.size}
       else
         @holidays = Holiday.all.search(params[:keyword]).order(created_at: :desc)
       end
