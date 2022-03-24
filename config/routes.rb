@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :holiday_comments, only: [:create, :destroy]
   end
 
-  resources :users, only:[:show, :edit, :update] do
+  resources :users, only:[:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member

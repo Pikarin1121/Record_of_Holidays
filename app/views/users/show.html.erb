@@ -3,6 +3,8 @@
     <div class="col-lg-8 col-md-8 col-sm-8 mx-auto">
 
       <h4>ユーザー情報</h4>
+      <%= flash[:confirm] %>
+      <%= flash[:danger] %>
 
       <div>
         <%= image_tag @user.get_profile_image(100,100) %>

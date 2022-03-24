@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
+  def index
+    redirect_to new_user_registration_path
+  end
 
   def show
     @user = User.find(params[:id])
@@ -8,7 +13,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user == current_user
-      flash[:notice] = "権限なし"
+      flash[:danger] = "権限なし"
       redirect_to user_path(current_user.id)
     end
   end
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "ユーザー情報を更新しました"
+      flash[:confirm] = "ユーザー情報を更新しました"
       redirect_to user_path(@user.id)
     else
       render :edit
