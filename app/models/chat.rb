@@ -3,6 +3,8 @@ class Chat < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
+  validates :message, presence: true
+
   has_many :notifications, dependent: :destroy
 
   def create_notification_dm!(user, chat)

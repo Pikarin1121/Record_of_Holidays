@@ -2,6 +2,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8 mx-auto">
         <h4>お休みの記録</h4>
+
         <div class="media border-bottom border-3">
 
           <%= link_to user_path(@holiday.user.id) do %>
@@ -15,21 +16,21 @@
             <% end %>
           </h5>
 
-           <p class="mt-4"><%= @holiday.content %></p>
+          <p class="mt-4"><%= @holiday.content %></p>
 
-           <div class="d-flex justify-content-center mt-1">
-             <% if @holiday.image_id.attached? %>
-               <%= image_tag @holiday.image_id, size: "500x300" %>
-             <% end %>
-           </div>
+          <div class="d-flex justify-content-center mt-1">
+            <% if @holiday.image_id.attached? %>
+              <%= image_tag @holiday.image_id, size: "500x300" %>
+            <% end %>
+          </div>
 
-           <p style="text-align: right;"><%= @holiday.created_at.strftime('%Y/%m/%d') %></p>
+          <p style="text-align: right;"><%= @holiday.created_at.strftime('%Y/%m/%d') %></p>
 
-           <div style="text-align: right;">
-             <% if @holiday.user == current_user %>
-               <%= link_to "削除", holiday_path(@holiday), method: :delete, data: { confirm: "【確認】投稿を削除しますか？" }, class: 'btn btn-danger btn-sm' %>
-             <% end %>
-           </div>
+          <div style="text-align: right;">
+            <% if @holiday.user == current_user %>
+              <%= link_to "削除", holiday_path(@holiday), method: :delete, data: { confirm: "【確認】投稿を削除しますか？" }, class: 'btn btn-danger btn-sm' %>
+            <% end %>
+          </div>
 
            <div class="mt-1 mb-1 border-top border-1">
              <i class="far fa-comment"></i>

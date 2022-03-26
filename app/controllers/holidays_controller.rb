@@ -1,6 +1,4 @@
 class HolidaysController < ApplicationController
-  def new
-  end
 
   def index
     @new_holiday = Holiday.new
@@ -19,7 +17,6 @@ class HolidaysController < ApplicationController
   end
 
   def show
-    @new_holiday = Holiday.new
     @holiday = Holiday.find(params[:id])
     @holiday_comment = HolidayComment.new
   end

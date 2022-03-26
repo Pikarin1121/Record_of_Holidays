@@ -5,6 +5,8 @@ class HolidayComment < ApplicationRecord
   belongs_to :holiday
   has_many :notifications, dependent: :destroy
 
+  validates :comment, presence: true
+
   def get_image
     image_id
   end

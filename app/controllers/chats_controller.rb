@@ -1,9 +1,4 @@
 class ChatsController < ApplicationController
-  
-  def index
-    @rooms = current_user.user_rooms.pluck(:room_id)
-  end
-  
 
   def show
     @user = User.find(params[:id])
@@ -25,9 +20,9 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
-    @chat.create_notification_dm!(current_user, @chat)
-
+    if @chat.save
+      @chat.create_notification_dm!(current_user, @chat)
+    end
   end
 
   private

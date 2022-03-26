@@ -7,6 +7,10 @@ class HolidayCommentsController < ApplicationController
     if comment.save
       holiday.create_notification_holiday_comment!(current_user, comment.id)
       redirect_to holiday_path(holiday)
+    else
+      @holiday = Holiday.find(params[:holiday_id])
+      @holiday_comment = HolidayComment.new
+      render 'holidays/show'
     end
   end
 
