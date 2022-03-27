@@ -6,7 +6,7 @@ class HolidayCommentsController < ApplicationController
     comment.holiday_id = holiday.id
     if comment.save
       holiday.create_notification_holiday_comment!(current_user, comment.id)
-      redirect_to holiday_path(holiday)
+      redirect_to holiday_path(holiday), notice: 'コメントを送信しました'
     else
       @holiday = Holiday.find(params[:holiday_id])
       @holiday_comment = HolidayComment.new
@@ -16,7 +16,7 @@ class HolidayCommentsController < ApplicationController
 
   def destroy
     HolidayComment.find(params[:id]).destroy
-    redirect_to holiday_path(params[:holiday_id])
+    redirect_to holiday_path(params[:holiday_id]), notice: 'あなたのコメントを削除しました'
   end
 
   private

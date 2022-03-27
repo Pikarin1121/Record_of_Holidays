@@ -25,9 +25,14 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
-        date : 生年月日
+      holiday:
+        content: 休日内容
+      holiday_comment:
+        comment: コメント内容
     models:
       user: ユーザー
+      holiday: 休日記録
+      holiday_comment: コメント
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

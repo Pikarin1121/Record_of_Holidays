@@ -19,12 +19,28 @@
    box-sizing: border-box;
  }
 
-#theTarget {
-  height: 600px;
-  margin: auto;
-}
+  #error_explanation {
+    color: red;
+    text-align: center;
+  }
 
-.about-image {
-  height: 600px;
-  margin: auto;
-}
+  #theTarget {
+    height: 600px;
+    margin: auto;
+  }
+
+  .about-image {
+    height: 600px;
+    margin: auto;
+  }
+
+  .flash {
+    .notice {
+      color: green;
+      text-align: center;
+    }
+    .alert {
+      color: red;
+      text-align: center;
+    }
+  }

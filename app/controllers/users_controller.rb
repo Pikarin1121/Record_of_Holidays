@@ -13,16 +13,14 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     unless @user == current_user
-      flash[:danger] = "権限なし"
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), alert: '権限がありません'
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:confirm] = "ユーザー情報を更新しました"
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id), notice: 'ユーザー情報を更新しました'
     else
       render :edit
     end

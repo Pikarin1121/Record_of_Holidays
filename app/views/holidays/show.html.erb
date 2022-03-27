@@ -45,6 +45,7 @@
 
         <div class="pb-3 border-bottom border-4">
           <%= form_with model: [@holiday, @holiday_comment] do |f| %>
+           <%= render 'devise/shared/error_messages', resource: @holiday_comment %>
            <%= f.text_area :comment, class: 'form-control-plaintext', placeholder: "コメント" %><br>
            <%= f.file_field :image_id, accept: "image/*" %>
            <%= f.submit '送信する' %>
