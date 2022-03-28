@@ -1,4 +1,10 @@
 class HolidayCommentsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    holiday = Holiday.find(params[:holiday_id])
+    redirect_to holiday_path(holiday)
+  end
 
   def create
     holiday = Holiday.find(params[:holiday_id])
@@ -10,6 +16,7 @@ class HolidayCommentsController < ApplicationController
     else
       @holiday = Holiday.find(params[:holiday_id])
       @holiday_comment = HolidayComment.new
+      @holyday_comment_error = comment
       render 'holidays/show'
     end
   end
