@@ -24,6 +24,17 @@
     text-align: center;
   }
 
+  #back {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+  }
+
+  .back-image {
+    width: 50px;
+    height: 50px;
+  }
+
   #theTarget {
     height: 600px;
     margin: auto;
@@ -32,6 +43,11 @@
   .about-image {
     height: 600px;
     margin: auto;
+  }
+
+  .content-box:hover {
+    opacity: 0.3;
+  　color: white;
   }
 
   .flash {

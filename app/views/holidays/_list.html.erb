@@ -13,10 +13,10 @@
         <% end %>
       </h5>
 
-      <div>
+      <div class="content-box">
         <%= link_to holiday_path(holiday.id), class: 'text-dark no-underline', style: "text-decoration:none;" do %>
           <p class="mt-4"><%= holiday.content %></p>
-  
+
           <div class="d-flex justify-content-center mt-1">
            <% if holiday.image_id.attached? %>
              <%= image_tag holiday.image_id, size: "600x400" %>

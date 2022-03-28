@@ -122,6 +122,9 @@
 
     <main>
       <%= render 'layouts/flash' %>
+      <span id="back">
+        <a href="#"><%= image_tag '戻るボタン.png', class: 'back-image' %></a>
+      </span>
       <%= yield %>
     </main>
 
