@@ -47,4 +47,3 @@ https://docs.google.com/spreadsheets/d/1kxbptddZlwx69BjKkhCJLQslzu9ATMs68WGtRdnl
 - [O-DAN](https://o-dan.net/ja/)
 - [morguefile](https://morguefile.com/)
 - [FontAwesome](https://fontawesome.com/)
-- [DesignEvo](https://www.designevo.com/)
