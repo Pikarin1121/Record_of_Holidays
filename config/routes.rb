@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get 'homes/about', as: 'about'
 
-  resources :holidays, only: [:new, :index, :create, :show, :destroy] do
+  resources :holidays, only: [:index, :create, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :holiday_comments, only: [:create, :destroy]
   end

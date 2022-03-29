@@ -31,7 +31,8 @@
 3. 休日にほかのユーザーと交流を深める時
 
 ## 設計書
-
+1. テーブル定義書図(https://docs.google.com/spreadsheets/d/1SdqF4XI6tN4dpE5eB2TAGw8upslqpy5Sj7EqnYmejdE/edit?usp=sharing)
+2. アプリケーション設計書(https://docs.google.com/spreadsheets/d/1ItNzpUMBwkKNsJQegPH1w1EMO-FQ5FsiIO3NQI71f_Q/edit?usp=sharing)
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1kxbptddZlwx69BjKkhCJLQslzu9ATMs68WGtRdnl_Tw/edit?usp=sharing
