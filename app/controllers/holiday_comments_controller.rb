@@ -1,6 +1,7 @@
 class HolidayCommentsController < ApplicationController
   before_action :authenticate_user!
-
+  
+  # indexアクションに関して、コメントできずにエラーメッセージが出る画面でリロードするとエラーを吐くのでその対策
   def index
     holiday = Holiday.find(params[:holiday_id])
     redirect_to holiday_path(holiday)

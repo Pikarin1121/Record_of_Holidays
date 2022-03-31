@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-
+  
+  # indexアクションに関して、これは新規登録画面でエラーメッセージがでたページでリロードすると出てしまうエラー対策として記述
   def index
     redirect_to new_user_registration_path
   end
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    # 他のユーザーの編集画面に遷移できないようにする
     unless @user == current_user
       redirect_to user_path(current_user.id), alert: '権限がありません'
     end
